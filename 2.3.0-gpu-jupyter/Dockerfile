@@ -3,6 +3,10 @@ FROM tensorflow/tensorflow:2.3.0-gpu-jupyter
 # Change Ubuntu repository address to DaumKaKao
 RUN sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 
+# Change Timezone
+ENV TZ=Asia/Seoul
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Install essential packages
 RUN apt update && \
     apt install -y \
