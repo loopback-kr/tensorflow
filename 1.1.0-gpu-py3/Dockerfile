@@ -1,5 +1,8 @@
 FROM tensorflow/tensorflow:1.1.0-devel-gpu-py3
 
+# Change default Shell to bash
+SHELL ["/bin/bash", "-c"]
+
 # Change Ubuntu repository address to DaumKaKao
 RUN sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
 
