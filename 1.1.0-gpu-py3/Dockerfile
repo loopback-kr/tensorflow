@@ -26,11 +26,17 @@ RUN mkdir ~/.pip && \
 "trusted-host=mirror.kakao.com\n"\
 "progress-bar=emoji"\
         > ~/.pip/pip.conf && \
-    pip install --upgrade pip
+    pip install --upgrade pip && \
+    pip install --no-cache-dir \
+        matplotlib \
+        numpy
 
 # Add alias
 RUN alias l="ls -alh --full-time" && \
     alias cls='clear'
+
+# Delete unnecessary data
+RUN rm -rf /var/lib/apt/lists/*
 
 # Write maintainer information
 LABEL maintainer="LIM HYUN SEOK <contact@loopback.kr>"
