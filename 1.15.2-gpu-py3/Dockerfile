@@ -1,7 +1,7 @@
 FROM tensorflow/tensorflow:1.15.2-gpu-py3
 
 # Change Ubuntu repository address to DaumKaKao
-RUN sed -i 's/archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+RUN sed -i 's/archive.ubuntu.com/mirror.loopback.kr/g' /etc/apt/sources.list
 
 # Install essential packages
 RUN apt update && \
@@ -19,8 +19,8 @@ RUN apt update && \
 RUN mkdir ~/.pip && \
     echo -e \
 "[global]\n"\
-"index-url=http://mirror.kakao.com/pypi/simple/\n"\
-"trusted-host=mirror.kakao.com\n"\
+"index-url=http://mirror.loopback.kr/pypi/simple/\n"\
+"trusted-host=mirror.loopback.kr\n"\
 "progress-bar=emoji"\
         > ~/.pip/pip.conf && \
     pip install --upgrade pip && \

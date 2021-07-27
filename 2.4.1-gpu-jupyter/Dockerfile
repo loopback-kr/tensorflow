@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:2.3.0-gpu-jupyter
+FROM tensorflow/tensorflow:2.4.1-gpu-jupyter
 
 # Change Ubuntu repository address to DaumKaKao
 RUN sed -i 's/archive.ubuntu.com/mirror.loopback.kr/g' /etc/apt/sources.list
@@ -6,6 +6,8 @@ RUN sed -i 's/archive.ubuntu.com/mirror.loopback.kr/g' /etc/apt/sources.list
 # Change Timezone
 ENV TZ=Asia/Seoul
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# Set X Server address
+ENV DISPLAY=dev.amilab.dev:0
 
 # Install essential packages
 RUN apt update && \
