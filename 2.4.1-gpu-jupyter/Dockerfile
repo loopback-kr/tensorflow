@@ -5,7 +5,7 @@ FROM tensorflow/tensorflow:2.4.1-gpu-jupyter
 # Set Timezone
 ENV TZ=Asia/Seoul
 # Set X Server remote address
-ENV DISPLAY=dev.amilab.dev:0
+ENV DISPLAY=dev.loopback.kr:0
 
 
 ### Change settings
@@ -15,7 +15,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN sed -i 's/    xterm-color) color_prompt=yes;;/    #xterm-color) color_prompt=yes;;\n    xterm-color|*-256color) color_prompt=yes;;/' /root/.bashrc
 # Change original green color of bash shell prompt to red color
 RUN sed -i 's/    PS1=\x27${debian_chroot:+(\$debian_chroot)}\\\[\\033\[01;32m\\\]\\u@\\h\\\[\\033\[00m\\\]:\\\[\\033\[01;34m\\\]\\w\\\[\\033\[00m\\\]\\\$ \x27/    PS1=\x27\${debian_chroot:+(\$debian_chroot)}\\\[\\033\[01;31m\\\]\\u@\\h\\\[\\033\[00m\\\]:\\\[\\033\[01;34m\\\]\\w\\\[\\033\[00m\\\]\\\$ \x27/' /root/.bashrc
-# Change Ubuntu repository address to Kakao server
+# Change Ubuntu repository address to Kakao server in Republic of Korea
 RUN sed -i 's/archive.ubuntu.com/mirror.loopback.kr/g' /etc/apt/sources.list
 RUN sed -i 's/security.ubuntu.com/mirror.loopback.kr/g' /etc/apt/sources.list
 RUN sed -i 's/extras.ubuntu.com/mirror.loopback.kr/g' /etc/apt/sources.list
